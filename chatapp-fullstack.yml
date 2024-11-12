@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatapp-fullstack
+  labels:
+    app: chatapp-fullstack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatapp-fullstack
+  template:
+    metadata:
+      labels:
+        app: chatapp-fullstack
+    spec:
+      containers:
+      - name: chatapp-frontend
+        image: annyo2024/chatapp-frontend:v1.0
+        ports:
+        - containerPort: 5173
+      - name: chatapp-backend
+        image: annyo2024/chatapp-backend:v1.0
+        ports:
+        - containerPort: 4000

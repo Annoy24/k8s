@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cluster-ip-demo
+  labels:
+    app: nginx-cluster
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-cluster
+  template:
+    metadata:
+      labels:
+        app: nginx-cluster
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
